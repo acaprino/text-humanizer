@@ -1,0 +1,9 @@
+{
+  "name": "text-humanizer",
+  "version": "2.0.0",
+  "description": "Makes prose in any language read as written by a person, without inventing content: 25 writing patterns, docs/business/personal registers, a native Italian profile, write-back only on confirmation. Run /text-humanizer:humanize on a text or a file.",
+  "author": {
+    "name": "Alfio Caprino"
+  },
+  "license": "MIT"
+}

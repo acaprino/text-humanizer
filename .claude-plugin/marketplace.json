@@ -1,0 +1,16 @@
+{
+  "name": "text-humanizer",
+  "owner": {
+    "name": "Alfio Caprino"
+  },
+  "metadata": {
+    "description": "Prose humanization without invented content."
+  },
+  "plugins": [
+    {
+      "name": "text-humanizer",
+      "source": "./",
+      "description": "Makes prose in any language read as written by a person, without inventing content. Run /text-humanizer:humanize on a text or a file."
+    }
+  ]
+}
