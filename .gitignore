@@ -1,2 +1,4 @@
 evals/results/
 effectiveness-metrics.json*
+.jcode/local/
+__pycache__/

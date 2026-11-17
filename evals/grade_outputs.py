@@ -11,17 +11,55 @@ import json
 import re
 
 
+FENCE_RE = re.compile(r"(?m)^(`{3,})(?:[^\n]*)\n(.*?)\n\1\s*$", re.DOTALL)
+FINAL_HEADING_RE = re.compile(r"(?im)^(?:#{1,6}\s+|\*{2})(?:Final text|Testo finale)\b[^\n]*$")
+NEXT_HEADING_RE = re.compile(r"(?im)^(?:#{1,6}\s+|\*{2})(?:Changes|Modifiche|Open points|Punti aperti)\b[^\n]*$")
+SECTION_SETS = (
+    ("Final text", "Changes", "Open points"),
+    ("Testo finale", "Modifiche", "Punti aperti"),
+)
+
+
+def _strip_blockquote_lines(report):
+    return "\n".join(line[1:].lstrip(" ") if line.startswith(">") else line for line in report.splitlines())
+
+
+def extract_final_text(report):
+    heading = FINAL_HEADING_RE.search(report)
+    if heading:
+        next_heading = NEXT_HEADING_RE.search(report, heading.end())
+        end_pos = next_heading.start() if next_heading else len(report)
+        match = FENCE_RE.search(report, heading.end(), end_pos)
+        if match:
+            return match.group(2), True
+        return _strip_blockquote_lines(report[heading.end():end_pos]).strip(), False
+    match = FENCE_RE.search(report)
+    if match:
+        return match.group(2), True
+    return _strip_blockquote_lines(report).strip(), False
+
+
 def final_text(report):
-    match = re.search(r"(?m)^(`{3,})(?:[^\n]*)\n(.*?)\n\1\s*$", report, re.DOTALL)
-    if not match:
+    text, has_fence = extract_final_text(report)
+    if not has_fence:
         raise ValueError("Report has no complete final-text fence")
-    return match.group(2)
+    return text
 
 
-def checks(case, text, report):
-    yield ("Report includes final text, Changes and Open points",
-           all(label in report for label in ("Final text", "Changes", "Open points")),
-           "Checked the complete report, not its final-text-only extract.")
+def _has_ordered_sections(report):
+    for first, second, third in SECTION_SETS:
+        p1 = re.search(rf"(?im)^(?:#{{1,6}}\s+|\*{{2}}){re.escape(first)}\b", report)
+        p2 = re.search(rf"(?im)^(?:#{{1,6}}\s+|\*{{2}}){re.escape(second)}\b", report)
+        p3 = re.search(rf"(?im)^(?:#{{1,6}}\s+|\*{{2}}){re.escape(third)}\b", report)
+        if p1 and p2 and p3 and p1.start() < p2.start() < p3.start():
+            return True
+    return False
+
+
+def checks(case, text, report, has_fence=True):
+    yield ("Report includes fenced final text, Changes and Open points",
+           _has_ordered_sections(report) and has_fence,
+           "Checked ordered EN/IT report headings and complete final-text code fence.")
     if case == "client-email":
         quote = "«La pagina resta bianca; il messaggio è E42»"
         yield ("Timestamp, duration limit, error code and direct quote are preserved",
@@ -56,9 +94,9 @@ def grade(iteration):
         for run in sorted(d for d in case.iterdir() if (d / "outputs/result.md").is_file()):
             config = run.name
             report = (run / "outputs/result.md").read_text(encoding="utf-8")
-            text = final_text(report)
+            text, has_fence = extract_final_text(report)
             expectations = [{"text": label, "passed": bool(passed), "evidence": evidence}
-                            for label, passed, evidence in checks(case.name, text, report)]
+                            for label, passed, evidence in checks(case.name, text, report, has_fence)]
             passed = sum(item["passed"] for item in expectations)
             total = len(expectations)
             failures += total - passed

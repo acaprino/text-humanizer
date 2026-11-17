@@ -9,7 +9,7 @@ argument-hint: "<text or file> [docs|business|personal] [proofread|light|full] [
 
 # Humanize
 
-Remove AI writing traces from prose, articles, posts, emails, documentation or any other non-code text, without inventing content. The `text-humanizer` agent does the rewrite in its own context; you prepare its brief, show its report and handle writing back. Do not rewrite the text yourself and do not read `references/rules.md`: the agent owns the rules.
+Remove AI writing traces from prose, articles, posts, emails, documentation or any other non-code text, without inventing content. The `text-humanizer` agent does the rewrite in its own context; you prepare its brief, show its report and handle writing back. Do not rewrite the text yourself and do not read `references/rules.md` unless no agent can be dispatched (Step 1): the agent owns the rules.
 
 This is for prose. It does not refactor source code and does not translate.
 
@@ -17,6 +17,7 @@ This is for prose. It does not refactor source code and does not translate.
 
 - **TARGET:** a file path, or inline text. If the user supplies a file target, verify that it exists and is readable; a missing or unreadable file is a blocker, not prose to rewrite. Ask for the correct path or pasted text. Treat a genuinely ambiguous input as text unless clarification is essential. With neither, ask for the text and wait.
 - **Conversation context:** relevant messages supplied with the target, kept separate from the text to rewrite. Forward them to the agent so it can judge repetition; never infer unseen context or insert the conversation into the final text.
+- **Writing sample:** an optional sample of the author's prose supplied with the target to match vocabulary, rhythm and form of address, kept separate from the text to rewrite.
 - **Register:** a signal. A register the user states with TARGET (`docs`, `business` or `personal`) sets it. Without one, the agent infers the register.
 - **Level:** a signal. "Correct" or "fix the errors" means `proofread`; "make it clearer" or "make it flow" means `light`; "humanize", "rewrite" or "de-AI" means `full`. Running this command with no other verb means `full`.
 - **Score:** a signal. The user asking for a score or quality rating with TARGET adds the quality score. Default: no score.
@@ -34,6 +35,7 @@ language and patterns.
 
 Input: <the file path, or the inline text>
 Conversation context (not part of the final text): <relevant supplied messages, or none>
+Writing sample (for voice only, not part of the final text): <supplied sample, or none>
 File handling: if a path is given, read it; do not write or edit any file.
 Register: <docs | business | personal | infer>
 Level: <proofread | light | full>
@@ -59,4 +61,4 @@ Humanized version ready.
 3. Only show the result
 ```
 
-Write only after the user picks 1 or 2, and write only the body inside the **Final text** fence of the report, exactly as it stands: never the fence lines, the headings or the other sections.
+Write only after the user picks 1 or 2, and write only the body inside the final-text fence of the report (headed **Final text** or its equivalent in the language of the text, such as **Testo finale**), exactly as it stands: never the fence lines, the headings or the other sections.

@@ -51,7 +51,7 @@ Use a supplied writing sample to preserve the author's vocabulary, rhythm and fo
 
 ## LEVELS
 
-The level sets how much may change. The caller can set it; otherwise infer it from the verb of the request. When unsure, use `light`.
+The level sets how much may change. An explicit level set by the caller wins (`/text-humanizer:humanize` invoked with no other verb sets `full`); otherwise infer it from the verb of the request, and when unsure use `light`.
 
 | Level | Asked as | What changes |
 |---|---|---|
@@ -124,7 +124,7 @@ Compounds keep their required hyphens (`third-party`, `cross-functional`); patte
    - **Quotations:** verbatim.
 
    Nothing is added, and nothing is dropped except puffery and the vague claims listed as open points.
-6. Dash pass: outside protected content, replace dashes used as connectors or to bracket asides using pattern 13. Direct quotations, legal text, code and other protected content stay unchanged even when they contain those dashes.
+6. Dash pass (skip at `proofread` level): outside protected content, replace dashes used as connectors or to bracket asides using pattern 13. Direct quotations, legal text, code and other protected content stay unchanged even when they contain those dashes.
 7. Reply in the requested format.
 
 ## Output Format
@@ -135,9 +135,9 @@ Compounds keep their required hyphens (`third-party`, `cross-functional`); patte
 3. **Open points:** claims cut or left general for lack of a fact, placeholders left unfilled, and inconsistencies worth the author's attention. Write "None" when there are none.
 4. The quality score, only when asked.
 
-**text-only:** the final text and nothing else.
+**text-only:** the final text and nothing else. Because Open points are omitted, state vague claims plainly from what the input supports instead of cutting content that would require an open point.
 
-When editing files, name each file instead of repeating its text, and add Changes and Open points in `report` format, in the language of the text.
+Localize section headings, Changes and Open points in the language of the text (for example **Testo finale**, **Modifiche**, **Punti aperti** in Italian).
 
 ## Quality Scoring (Only When Asked)
 

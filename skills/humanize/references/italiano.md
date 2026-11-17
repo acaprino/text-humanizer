@@ -1,6 +1,6 @@
 # Italian profile
 
-Read this file whenever the text is Italian. It adds to `SKILL.md` and replaces nothing: the ground rules, the registers, the dash rule and the structural patterns hold unchanged. The English word lists (patterns 7 and 8) do not apply; the Italian lists below do.
+Read this file whenever the text is Italian. It adds to `rules.md` and replaces nothing: the ground rules, the registers, the dash rule and the structural patterns hold unchanged. The English word lists (patterns 7 and 8) do not apply; the Italian lists below do.
 
 ## Un italiano credibile, non una traduzione
 
