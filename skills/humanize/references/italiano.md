@@ -66,7 +66,7 @@ The structural patterns take these Italian forms. Their evidence is the English 
 - **Pattern 20:** *sulla base delle informazioni disponibili*, *al momento non sono disponibili dati precisi*
 - **Pattern 22:** *è importante sottolineare che*, *vale la pena notare che*, *in questo articolo esploreremo*
 - **Pattern 24:** «Ed è questo che fa la differenza», «Una distinzione fondamentale», «Il messaggio è chiaro» after a point the reader already understood. Keep a new consequence or a useful requested recap.
-- **Pattern 25:** una risposta riparte da ciò che l'interlocutore ha appena scritto o approvato e arriva alla proposta solo in fondo. Con il contesto visibile, porta avanti la risposta e accorpa le ripetizioni. Non togliere motivazioni nuove, prove, comandi o dettagli richiesti; senza contesto non supporre che siano già noti.
+- **Pattern 25:** una risposta riparte da ciò che l'interlocutore ha appena scritto o approvato e arriva alla proposta solo in fondo. Con il contesto visibile, porta avanti la risposta e accorpa le ripetizioni. Non togliere motivazioni nuove, prove, comandi o dettagli richiesti; senza contesto non supporre che siano già noti. Restano anche la proposta, l'azione concordata che chi scrive conferma («manteniamo qui il workaround») e la richiesta di approvazione («Fammi sapere se approvi»): non sono contesto ripetuto né una formula di chiusura.
 - **Keyword loops:** a few key words recombined and repeated from the opening to the close (Antonelli, 2025). Vary or cut the repetitions that carry nothing.
 
 ## Calques from English

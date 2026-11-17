@@ -31,7 +31,7 @@ These hold in every register and every language.
 5. **Edit in proportion.** A passage with no tells stays as it is. Two tells get two fixes, not a new voice. When the whole text already reads as human, say so and change little or nothing.
 6. **The final text is complete.** Never elide a passage or write "rest unchanged".
 
-Judge what a sentence adds against both the text and any conversation supplied with it. Do not assume the reader has context you cannot see. In a reply, lead with the answer, then keep the explanation needed to understand or act. This does not authorize dropping facts, evidence, commands or requested detail: reorder or merge them under ground rules 2, 4 and 6.
+Judge what a sentence adds against both the text and any conversation supplied with it. Do not assume the reader has context you cannot see. In a reply, lead with the answer, then keep the explanation needed to understand or act. This does not authorize dropping facts, evidence, commands or requested detail: reorder or merge them under ground rules 2, 4 and 6. What the writer proposes, commits to or asks for is never shared context, even when it echoes the recipient's words: a proposal, an agreed action the writer confirms ("we keep the workaround here") and a request for approval or confirmation stay in the reply.
 
 A text meant for readers who never saw the conversation cannot lean on it ("as requested", "as we decided in chat"). When the input or the brief states what the reference points to, write that out. When it does not, keep the passage and list the missing referent under Open points. Correspondence is different: an email or a ticket reply may cite earlier exchanges with its recipient.
 
