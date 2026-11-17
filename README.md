@@ -5,11 +5,11 @@ Rende naturale un testo in prosa, in qualsiasi lingua, senza inventare contenuti
 ## Installazione
 
 ```
-claude plugin marketplace add D:\Projects\text-humanizer
+claude plugin marketplace add acaprino/text-humanizer
 claude plugin install text-humanizer@text-humanizer
 ```
 
-Per una sola sessione, senza installare: `claude --plugin-dir D:\Projects\text-humanizer`.
+Per una sola sessione, da una copia locale e senza installare: `claude --plugin-dir <cartella del repo>`.
 
 ## Uso
 
@@ -36,10 +36,14 @@ Il risultato è un report: testo finale completo, modifiche raggruppate per patt
 `evals/` contiene tre casi italiani (email al cliente, risposta in un ticket, runbook con contenuti protetti), eseguibili con:
 
 ```
-claude plugin eval D:\Projects\text-humanizer --no-publish
+claude plugin eval . --no-publish
 ```
 
 `evals/grade_outputs.py` controlla in modo meccanico che il report abbia le sue sezioni e che i valori letterali (orari, codici, citazioni, blocchi protetti) restino identici. Fedeltà semantica e naturalezza richiedono una lettura.
+
+## Licenza
+
+MIT, vedi `LICENSE`.
 
 ## Origine e fonti
 
